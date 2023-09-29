@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="h-full grid place-items-center">
+
+    <main id="app">
+      <div v-show="inCompleatedAassignment.length">
+        <h3 class="text-xl font-semibold my-4">Check List's</h3>
+        <ul>
+            <li v-for="assignment in inCompleatedAassignment" class="px-8 py-3 mb-2 shadow-md bg-sky-950 text-slate-100" v-bind:key="assignment.key">
+                <label>
+                    {{ assignment.name }}
+                    <input type="checkbox" v-model="assignment.compleate">
+                </label>
+            </li>
+        </ul>
+      </div>
+
+      <div v-show="compleatedAssignment.length">
+        <h3 class="text-xl font-semibold my-4">Compleate List's</h3>
+        <ul>
+            <li v-for="assignment in compleatedAssignment" class="px-8 py-3 mb-2 shadow-md bg-sky-950 text-slate-100" v-bind:key="assignment.key">
+                <label>
+                    {{ assignment.name }}
+                    <input type="checkbox" v-model="assignment.compleate">
+                </label>
+            </li>
+        </ul>
+      </div>
+    </main>
+    
+
+    <script>
+
+        Vue.createApp({
+            data() {
+
+                return {
+                    assignments: [
+                        {name: 'Task One', compleate: false, key:1},
+                        {name: 'Task Two', compleate: false, key:2},
+                        {name: 'Task Three', compleate: false, key:3},
+                        {name: 'Task Four', compleate: false, key:4}
+                    ]
+                };
+            },
+
+            computed: {
+                compleatedAssignment() {
+
+                    return this.assignments.filter(a => a.compleate);
+                },
+                inCompleatedAassignment() {
+
+                    return this.assignments.filter(a => !a.compleate);
+                }
+            }
+        }).mount('#app')
+
+
+    </script>
+</body>
+</html>

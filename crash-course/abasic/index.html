@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue js</title>
     <script src="https://unpkg.com/vue@3"></script>
+    <style>
+        .bg-dark {
+            background-color: darkcyan;
+        }
+        .bg-blue {
+            background-color: cornflowerblue;
+        }
+    </style>
 </head>
 <body>
     
@@ -18,6 +26,10 @@
         </p>
 
         <p>{{ greeting }} ({{ greeting.length }})</p>
+
+        <p>
+            <button v-bind:class="active ? 'bg-blue' : 'bg-dark' " v-on:click="toggle">Click Me</button>
+        </p>
     </div>
 
 
@@ -30,7 +42,16 @@
 
             return {
 
-                greeting:'Hello vue developer,s'
+                greeting:'Hello vue developer,s',
+                active: false,
+            }
+        },
+
+        methods: {
+
+            toggle() {
+
+                this.active = !this.active;
             }
         }
     }).mount('#app');
