@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="h-full grid place-items-center bg-slate-800">
+    
+    <main id="app" class="shadow-xl px-8 py-10 bg-slate-100 rounded-lg">
+        <form @submit="formSubmit">
+            <input type="text" class="h-10 w-80 bg-slate-800 rounded-lg text-white px-3 focus:outline-none mb-3" placeholder="Type something" @keyup.enter="textKeyUp"><br>
+            {{keyval}}
+            <button @click="clickme" class="py-2 px-4 bg-cyan-950 rounded-lg text-gray-200 hover:bg-cyan-900">Submit</button>
+        </form>
+    </main>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    keyval: ''
+                };
+            },
+            methods: {
+                textKeyUp(ev) {
+                    this.keyval = ev.target.value;
+                },
+
+                formSubmit(ev) {
+                    ev.preventDefault();
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
