@@ -10,10 +10,11 @@
 <body class="h-full grid place-items-center bg-slate-800">
     
     <main id="app">
-        <div class="shadow-xl px-8 py-10 bg-slate-100 rounded-lg" :class="active">
+        <div class="shadow-xl px-8 py-10 bg-slate-100 rounded-lg" :class="active" :style="'background-color:' + active">
                 <button class="py-2 px-4 bg-cyan-950 rounded-lg text-gray-200 mr-2 mb-2" :class="{'bg-violet-700': active == 'bg-red-500'}" @click="activeClass('bg-red-500')">Red</button>
                 <button class="py-2 px-4 bg-cyan-950 rounded-lg text-gray-200 mr-2 mb-2" :class="{'bg-violet-700': active == 'bg-lime-600'}" @click="activeClass('bg-lime-600')">Green</button>
                 <button class="py-2 px-4 bg-cyan-950 rounded-lg text-gray-200 mr-2 mb-2" :class="{'bg-violet-700': active == 'bg-blue-600'}" @click="activeClass('bg-blue-600')">Blue</button>
+                <input type="color" v-model="active" name="" id="">
         </div>
     </main>
     <script>
@@ -27,7 +28,7 @@
                 activeClass(colour) {
                     this.active = colour;
                     console.log(this.active);
-                }
+                },
             }
             
         }).mount('#app')
