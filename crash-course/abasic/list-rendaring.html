@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="h-full grid place-items-center bg-slate-800">
+    
+    <main id="app">
+        <div class="shadow-xl px-8 py-10 bg-slate-100 rounded-lg">
+            <input type="text" class="h-10 w-80 bg-slate-800 rounded-lg text-white px-3 focus:outline-none mb-3" placeholder="Add Skil" v-model="newSkil">
+            <button class="py-2 px-4 ml-2 bg-cyan-950 rounded-lg text-gray-200 hover:bg-cyan-900" @click="addSkil" :class="{hidden: addActive}">Submit</button><button class="py-2 px-4 ml-2 bg-cyan-950 rounded-lg text-gray-200 hover:bg-cyan-900" @click="update" :class="{hidden: updateActive}">Update</button>
+
+            <h2 class="text-2xl font-bold my-3">All Skils</h2>
+            <ul>
+                <li class="py-2 px-3 mb-2 bg-cyan-900 rounded-md flex justify-between text-gray-200 font-medium" v-for="skil in skils" :key="skil[1]">
+                    <span class="py-1 px-4 mr-2">{{ skil[0] }}</span>
+                    <span>
+                        <button class="py-1 px-4 mr-2 rounded-md bg-cyan-500" @click="edit(skil[1])">Edit</button>
+                        <button class="py-1 px-2 rounded-md bg-red-600" @click="deleteSkil(skil[1])">Delete</button>
+                    </span> 
+                </li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        Vue.createApp({
+           data() {
+            return {
+                skils: [
+                    ['HTML', '1'], 
+                    ['CSS', '2'], 
+                    ['JavaScript', '3']
+                ],
+                newSkil: '',
+                addActive : false,
+                updateActive: true,
+                key: ''
+            }
+           },
+
+           methods: {
+            addSkil() {
+                if (this.newSkil != '') {
+                    this.skils.push([this.newSkil, this.skils.length + 1]);
+                    this.newSkil = ''
+                }
+            },
+            deleteSkil(key) {
+                let getLength = this.skils.length;
+
+                for (let i = 0; i < getLength; i++) {
+
+                    if (this.skils[i][1] == key) {
+                       return this.skils.splice(i,1);
+                    }
+                }
+            },
+            edit(key) {
+                this.addActive = !this.addActive;
+                this.updateActive = !this.updateActive;
+                let getLength = this.skils.length;
+
+                for (let i = 0; i < getLength; i++) {
+
+                    if (this.skils[i][1] == key) {
+                        this.newSkil = this.skils[i][0];
+                        this.key = key;
+                    }
+                }
+            },
+            update() {
+                this.addActive = !this.addActive;
+                this.updateActive = !this.updateActive;
+                let getLength = this.skils.length;
+
+                for (let i = 0; i < getLength; i++) {
+
+                    if (this.skils[i][1] == this.key) {
+                        this.skils[i][0] = this.newSkil;
+                        this.key = '';
+                        this.newSkil = '';
+                    }
+                }
+            }
+           }
+        }).mount('#app')
+    </script>
+</body>
+</html>
