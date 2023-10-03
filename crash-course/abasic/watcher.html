@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue js</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body class="h-full grid place-items-center bg-slate-800">
+    
+    <main id="app">
+        <div class="shadow-xl px-8 py-10 bg-slate-100 rounded-lg">
+            <form>
+                <input type="text" class="h-10 w-80 bg-slate-800 rounded-lg text-white px-3 focus:outline-none mb-3" placeholder="Type something" v-model="text"><br>
+                <input type="text" class="h-10 w-80 bg-slate-800 rounded-lg text-white px-3 focus:outline-none mb-3" placeholder="Type something" v-model="name.firstName"><br>
+                <button class="py-2 px-4 bg-cyan-950 rounded-lg text-gray-200 hover:bg-cyan-900">Submit</button>
+            </form>
+        </div>
+    </main>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    text: '',
+                    name: {
+                        firstName: '',
+                        lastName: ''
+                    }
+                }
+            },
+            watch: {
+                text(newValue, oldValue) {
+                    if(isNaN(this.text)) {
+                        alert("You Should Type text");
+                        this.text = oldValue;
+                    }
+                },
+                'name.firstName': function (newValue, oldValue) {
+                    if(this.name.firstName.length > 6) {
+                        alert("First Name Should be 6 charecter");
+                        this.name.firstName = oldValue;
+                    }
+                }
+            }
+            
+        }).mount('#app')
+    </script>
+</body>
+</html>
