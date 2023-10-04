@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saudia</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3"></script>
 </head>
@@ -13,11 +14,43 @@
         <div class="p-6 bg-slate-100 rounded-md shadow-xl">
             <div class="font-medium">
                 <span class="px-4 py-0 mr-3 rounded-full bg-red-500"></span>Solid
-                <span class="px-4 py-0 mx-3 rounded-full bg-slate-300"></span>Solid
-                <span class="px-4 py-0 mx-3 rounded-full bg-slate-700"></span>Solid
-                <span class="px-4 py-0 mx-3 rounded-full bg-lime-800"></span>Solid
+                <span class="px-4 py-0 mx-3 rounded-full bg-slate-300"></span>Availabel
+                <span class="px-4 py-0 mx-3 rounded-full bg-slate-700"></span>Booked
+                <span class="px-4 py-0 mx-3 rounded-full bg-lime-800"></span>Selected
+            </div>
+            <div class="flex mt-4 ">
+                <div class="border border-green-900 px-2 py-2 mr-4">
+                    <table class="border-separate border-spacing-y-6 border-spacing-x-4">
+                        <thead>
+                            <tr>
+                                <th class="px-4 border border-green-900 mr-4">Door</th> 
+                                <th class="px-4 border border-green-900">Driver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="busSeat in busSeats">
+                                <td>
+                                    <span 
+                                    class="py-2 px-2 border border-green-900" :key="busSeat[0].name" :class="{'hover:bg-slate-300': busSeat[0].type == 'available'}">{{busSeat[0].name}}</span>
+                                    <span class="py-2 px-2 ml-2 border border-green-900 hover:bg-slate-300 cursor-pointer" :key="busSeat[1].name">{{busSeat[1].name}}</span>
+                                </td>
+                                <td>
+                                    <span class="py-2 px-2 border border-green-900 hover:bg-slate-300 cursor-pointer" :key="busSeat[2].name">{{busSeat[2].name}}</span>
+                                    <span class="py-2 px-2 ml-2 border border-green-900 w-0 hover:bg-slate-300 cursor-pointer" :key="busSeat[3].name">{{busSeat[3].name}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="w-80 flex justify-center items-center">
+                    <div class="text-center">
+                        <p>No seat selected</p>
+                        <p>Select some seats first</p>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <script src="app.js"></script>
 </body>
 </html>
