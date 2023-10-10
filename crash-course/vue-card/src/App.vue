@@ -10,7 +10,7 @@
       <CardBody 
       :title="title"
       :price="price"
-      @BuyNow="BuyNowClick"
+      @BuyNowClick="BuyNowClick"
       ></CardBody>
     </div>
   </div>
@@ -30,8 +30,8 @@ export default {
     }
   },
   methods: {
-    BuyNowClick() {
-      console.log('Hello');
+    BuyNowClick(e) {
+      console.log('Hello bb' + e);
     }
   }
 

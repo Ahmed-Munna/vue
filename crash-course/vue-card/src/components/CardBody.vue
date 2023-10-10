@@ -10,9 +10,16 @@
 export default {
     name: 'CardBody',
     props: {title: String, price: String},
+    emits: {
+        "BuyNowClick": function(e) {
+            if (e) {
+                return "Errro";
+            }
+        }
+    },
     methods: {
         BuyNow() {
-            this.$emit('BuyNow');
+            this.$emit('BuyNowClick', this.title);
         }
     }
 }
