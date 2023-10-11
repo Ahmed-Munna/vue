@@ -1,7 +1,18 @@
 <template lang="">
     <div>
         <h2>{{ msg }}</h2>
-        <HelloBD app-creator='Munna'> </HelloBD>
+        <HelloBD app-creator='Munna'>
+            <template v-slot:default>
+                <div>
+                    defult Sloat
+                </div>
+            </template>
+            <template v-slot:footer>
+                <div>
+                    Footer Slot
+                </div>
+            </template>
+        </HelloBD>
     </div>
 </template>
 <script>
@@ -13,7 +24,7 @@ export default {
     },
     data() {
         return {
-            msg: "Hello Vue JS",
+            msg: "Hello Vue JS"
         }
     },
 }

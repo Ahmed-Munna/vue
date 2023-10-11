@@ -1,6 +1,8 @@
 <template lang="en">
     <div>
         <h2> {{ mymsg }} ({{appCreator}})</h2>
+        <slot name="default"></slot>
+        <slot name="footer"></slot>
     </div>
 </template>
 <script>

@@ -1,43 +1,50 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import Rating from './components/Rating.vue'
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.png" width="125" height="125" />
+    <img alt="Vue logo" class="logo" src="./assets/vue.png" width="200" height="200" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="Rating Component" /> 
     </div>
   </header>
+  <Rating v-model:modelValue="rating" v-model:modelValueTwo="comments.rating"></rating>
+  
+
 
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        rating: 3,
+        comments: {
+          1: 'Bad',
+          2: 'So So',
+          3: 'Ok',
+          4: 'Good',
+          5: 'Great'
+        }
+      }
+    },
+  }
+</script>
 
 <style scoped>
 header {
   line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
+  margin: 0 auto 0 85px;
 }
 </style>
