@@ -21,6 +21,11 @@ export default {
       this.cardInfo.count += n;
     }
   },
+  provide() {
+    return {
+      message: this.cardInfo.title
+    }
+  },
   components: {
     Card,
   }
