@@ -6,6 +6,8 @@
         <form>
           <label for="addText" class="block mb-2 font-thin ">Add Items <span class="font-bold text-lime-600">*</span></label>
           <input type="text" id="addText" class="w-3/4 h-10 rounded-md focus:outline-lime-400 border border-lime-600 text-lime-600 mb-16" >
+          <label for="addText" class="block mb-2 font-thin ">Add Items <span class="font-bold text-lime-600">*</span></label>
+          <input type="text" id="addText" class="w-3/4 h-10 rounded-md focus:outline-lime-400 border border-lime-600 text-lime-600 mb-16" >
 
           <button class="px-8 py-2 bg-lime-300 font-medium rounded-md ml-4 w-52">Add</button>
         </form>
