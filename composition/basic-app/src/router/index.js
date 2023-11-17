@@ -4,6 +4,7 @@ import About from '../views/About.vue';
 import Contact from '../views/Contact.vue';
 import Profile from '../views/Profile.vue';
 import Service from '../views/SinglePage.vue';
+import NotFound from '../views/NotFound.vue';
 
 
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
     { path: '/contact', name: 'contact', component: Contact },
     { path: '/profile', name: 'profile', component: Profile },
     { path: '/service/:id', name: 'service', component: Service },
+    { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
 ];
 
 const router = createRouter({
