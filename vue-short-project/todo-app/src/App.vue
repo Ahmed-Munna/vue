@@ -1,36 +1,34 @@
+<script setup>
+  import { useTodoApp } from './store/TodoApp';
+
+  const values = useTodoApp();
+</script>
 <template>
   <div>
-    <div class="w-9/12 m-auto mt-40 shadow-md shadow-lime-200 px-14 pb-10 rounded-lg">
-      <img src="./assets/images/logo.png" class="w-40 h-18">
-      <div class="mb-10">
-        <form>
-          <label for="addText" class="block mb-2 font-thin ">Add Items <span class="font-bold text-lime-600">*</span></label>
-          <input type="text" id="addText" class="w-3/4 h-10 rounded-md focus:outline-lime-400 border border-lime-600 text-lime-600 mb-16" >
-          <label for="addText" class="block mb-2 font-thin ">Add Items <span class="font-bold text-lime-600">*</span></label>
-          <input type="text" id="addText" class="w-3/4 h-10 rounded-md focus:outline-lime-400 border border-lime-600 text-lime-600 mb-16" >
-
-          <button class="px-8 py-2 bg-lime-300 font-medium rounded-md ml-4 w-52">Add</button>
-        </form>
-      </div>
-      <div>
-        <ol>
-          <li class="p-4 mb-4 flex justify-between rounded-md border-2 border-dashed">
-            <p class="inline">Hello</p>
-            <div class="inline">
-              <a class="px-8 py-2 bg-sky-300 font-medium rounded-md ml-4">Update</a>
-              <a class="px-8 py-2 bg-red-300 font-medium rounded-md ml-4">Delete</a>
+      <!-- component -->
+    <div class="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
+      <div class="bg-white rounded shadow p-6 m-4 w-full lg:w-3/4 lg:max-w-lg">
+            <div class="mb-4">
+                <h1 class="text-grey-darkest">Todo List</h1>
+                <div class="flex mt-4">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker" placeholder="Add Todo">
+                    <button class="flex-no-shrink p-2 border-2 rounded text-teal border-teal ">Add</button>
+                </div>
             </div>
-          </li>
-        </ol>
-      </div>
+            <div>
+                <ul>
+                  <li class="flex mb-4 items-center">
+                    <input type="checkbox" id="compleate" class="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">
+                    <label for="compleate" class="w-full text-grey-darkest">Add another component to Tailwind Components</label>
+                    <button class="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">Remove</button>
+                  </li>
+                  {{ values.getAllTask() }}
+                </ul>
+            </div>
+        </div>
     </div>
   </div>
 </template>
-<script>
-export default {
-  
-}
-</script>
-<style lang="">
+<style scoped>
   
 </style>
